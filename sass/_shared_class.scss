@@ -1,0 +1,27 @@
+.container{
+    width: 90%;
+    max-width:500px;
+    margin:30px auto;
+}
+.title-color{
+    color:$Slate-900;
+    font-weight: 700;
+}
+
+.input-outline{
+    border: 1px solid $Slate-700;
+    border-radius: $borderRadius;
+    overflow: hidden;
+}
+
+.check-field{
+    padding: 10px;
+    margin-block-end: 10px;
+
+    label{
+        margin-inline-start: 5px;
+    }
+}
+.text-center{
+    text-align: center;
+}

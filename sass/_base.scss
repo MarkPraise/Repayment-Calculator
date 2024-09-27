@@ -1,0 +1,157 @@
+// Variables
+
+$font-family:"Plus Jakarta Sans",sans-serif;
+$font-size-p:16px;
+$fw-500:500;
+$fw-700:700;
+
+// COLORS
+
+// PRIMARY COLORS
+
+$primary-lime: hsl(61, 70%, 52%);
+$primary-red:hsl(4, 69%, 50%);
+
+// NEUTRAL COLORS
+$white:hsl(0,0%,100%);
+$Slate-100: hsl(202, 86%, 94%);
+$Slate-300: hsl(203, 41%, 72%);
+$Slate-500: hsl(200, 26%, 54%);
+$Slate-700: hsl(200, 24%, 40%);
+$Slate-900: hsl(202, 55%, 16%);
+
+// MEDIA SIZES
+
+$mobile:576px;
+$tablet:768px;
+$desktop:992px;
+
+
+// BORDER RADIUS
+$borderRadius:4px;
+// MEDIA QUERIES
+
+@mixin mp($size){
+    @media (min-width: $size){
+        @content;
+    }
+}
+
+// RESET
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+input,input:focus,input:active{
+    border: none;
+    outline: none;
+    font: inherit;
+    font-weight: 500;
+    letter-spacing: 1px;
+}
+
+body{
+    font-family: $font-family;
+    font-size: 10px;
+    color: $Slate-700;
+}
+
+
+// HEADER
+
+.header .container{
+    display: flex;
+    flex-direction: column;
+    margin-block: 20px;
+
+    h1{
+        margin-block-end: 10px;
+    }
+    button{
+        text-align: left;
+        border: none;
+        background-color:transparent;
+        font: inherit;
+        font-size: $font-size-p;
+        text-decoration: underline;
+        width: max-content;
+        cursor: pointer;
+    }
+}    
+// MAIN
+
+//   FORM SECTION
+.field-wrapper{
+    font-size: $font-size-p;
+    font-weight: 700;
+    margin-block-end: 30px;
+
+    label{
+        display: inline-block;
+        margin-block-end: 10px;   
+    }
+    
+    .field{
+        display: flex;
+        justify-content: space-between;
+    }    
+
+    .field input{
+        flex-grow: 1;
+        padding-inline: 2px;
+    }
+
+    .field-units{
+        background-color: $Slate-300;
+        color: $Slate-700;
+        display: inline-block;
+        padding: 10px;
+        height: 100%;
+    }
+}
+
+.submitButton{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+
+    width: 100%;
+    border: none;
+    background-color: $primary-lime;
+    font-weight: $fw-700;
+    font-size: $font-size-p;
+    padding: 10px;
+    border-radius: 30px;
+
+    cursor: pointer;
+}
+
+
+// MAIN RESULTS SECTION
+
+.results{
+    background-color: $Slate-900;
+    
+}
+.results .container{
+    margin-block-end: 0;
+    padding-block: 30px;
+    font-size: $font-size-p;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    
+    h2{
+        color:$white
+    }
+    p{
+        color:$Slate-300;
+        line-height: 1.5;
+    }
+}
