@@ -17,10 +17,29 @@
 .check-field{
     padding: 10px;
     margin-block-end: 10px;
-
+    
     label{
         margin-inline-start: 5px;
     }
+}
+
+.check-field input[type="radio"]{
+    appearance: none;
+
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+
+    border: 2px solid hsla(61,70%,52%,0.7);
+
+}
+
+.check-field input[type="radio"]:checked{
+    border: 0;
+    background-color: hsla(61,70%,52%,0.7);
+    outline-offset: 5px;
+    outline: 2px solid hsla(61,70%,52%,0.7);
+    margin-inline-end:10px ;
 }
 .text-center{
     text-align: center;

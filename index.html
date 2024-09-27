@@ -13,6 +13,8 @@
 
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
   <link rel="stylesheet" href="dist/css/style.min.css">
+
+  <script src="JS/script.js" defer></script>
 </head>
 <body>
   <header class="header">
@@ -65,13 +67,13 @@
           <div class="field-wrapper">
             <label for="type">Mortgage Type</label>
             <div class="check-field input-outline">
-              <input type="radio" name="type" id="repay" >
+              <input type="radio" name="type" id="repay" value="repayment" required>
               <label for="repay" class="title-color">Repayment</label>
             </div>
   
             <div class="check-field input-outline">
-              <input type="radio" name="type" id="interest" >
-              <label for="interest" class="title-color">Repayment</label>
+              <input type="radio" name="type" id="interest" value="interest">
+              <label for="interest" class="title-color">Interest Only</label>
             </div>
           </div>
   
@@ -84,13 +86,16 @@
     </section>
     <section class="results">
       <div class="container">
-        <div class="img-wrapper">
-          <img src="assets/images/illustration-empty.svg" alt="">
-        </div>
-        <h2>Results shown here</h2>
-        <p class="text-center">
-          Complete the form and click &OpenCurlyDoubleQuote;calculate repayments&CloseCurlyDoubleQuote; to see what your monthly repayments would be.
-        </p>
+        <section class="results-about">
+          <div class="img-wrapper">
+            <img src="assets/images/illustration-empty.svg" alt="">
+          </div>
+          <h2>Results shown here</h2>
+          <p class="text-center">
+            Complete the form and click &OpenCurlyDoubleQuote;calculate repayments&CloseCurlyDoubleQuote; to see what your monthly repayments would be.
+          </p>
+        </section>
+        <section class="results-details"></section>
       </div>
     </section>
     
