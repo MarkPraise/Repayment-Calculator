@@ -20,6 +20,8 @@
     
     label{
         margin-inline-start: 5px;
+        display: inline-block;
+        width: 90%;
     }
 }
 
@@ -31,7 +33,6 @@
     border-radius: 50%;
 
     border: 2px solid hsla(61,70%,52%,0.7);
-
 }
 
 .check-field input[type="radio"]:checked{
@@ -40,7 +41,37 @@
     outline-offset: 5px;
     outline: 2px solid hsla(61,70%,52%,0.7);
     margin-inline-end:10px ;
+
+    transition: margin 0.5s;
+}
+
+
+
+.check-field:hover{
+    cursor: pointer;
+    border-color: $primary-lime;
+    transition: 0.5s;
 }
 .text-center{
     text-align: center;
+}
+
+// toggleBackgroundColor
+
+.typeCheckedColor{
+    background-color: hsla(61, 75%, 72%, 0.882);
+}
+
+.error-border{
+    border-color: $primary-red;
+}
+
+.error-bg{
+    background-color: $primary-red;
+    color: $white;
+}
+.error{
+    margin-block-start: 10px;
+    font-weight: 500;
+    color: $primary-red;
 }
