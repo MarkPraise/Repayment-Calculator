@@ -37,7 +37,7 @@
               <span class="field-units">
                 <i class="bi bi-currency-pound"></i>
               </span>
-              <input type="text" id="amount" autocomplete="off" required >
+              <input type="number" id="amount" autocomplete="off" required >
             </div>
             <div class="error" aria-live="polite"></div>
           </div>
@@ -45,7 +45,7 @@
           <div class="field-wrapper">
             <label for="term">Mortgage Term</label>
             <div class="field input-outline">
-              <input type="text" id="term" autocomplete="off" required >
+              <input type="number" id="term" max="999" autocomplete="off" required >
               <span class="field-units">
                 years
               </span>
@@ -56,7 +56,7 @@
           <div class="field-wrapper">
             <label for="rate">Interest Rate</label>
             <div class="field input-outline">
-              <input type="number" max="100" id="rate" autocomplete="off" required >
+              <input type="number" max="100" step="0.01" id="rate" autocomplete="off" required >
               <span class="field-units">
                 &percnt;
               </span>
@@ -66,12 +66,12 @@
   
           <div class="field-wrapper">
             <label for="type">Mortgage Type</label>
-            <div class="check-field input-outline">
-              <input type="radio" name="type" id="repay" value="repayment" required>
+            <div class="check-field input-outline" tabindex="0">
+              <input type="radio" name="type" id="repay" value="repayment" required >
               <label for="repay" class="title-color">Repayment</label>
             </div>
   
-            <div class="check-field input-outline">
+            <div class="check-field input-outline" tabindex="0">
               <input type="radio" name="type" id="interest" value="interest" required>
               <label for="interest" class="title-color">Interest Only</label>
             </div>

@@ -21,7 +21,7 @@
     label{
         margin-inline-start: 5px;
         display: inline-block;
-        width: 90%;
+        width: 85%;
     }
 }
 
@@ -74,4 +74,11 @@
     margin-block-start: 10px;
     font-weight: 500;
     color: $primary-red;
+}
+
+.lime-text{
+    color: $primary-lime;
+}
+.white-text{
+    color: $white;
 }

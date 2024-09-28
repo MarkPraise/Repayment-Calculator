@@ -31,20 +31,20 @@ class Mortgage_Calc{
         return this._type;
     }
     setType(type){
-        this._type =type;
+        this._type = type;
     }
 
     calcRepayments(valueType){
         if(valueType == "repayment"){
-            console.log("Repayment");
+            return (this.getAmount() + (this.getAmount() * this.getRate() * this.getTerm())).toFixed(2);
         }
         else if(valueType == "interest"){
-            console.log("Interest");
+            return (this.getAmount() *  this.getRate() * this.getTerm()).toFixed(2);
         }
-        else{
-            console.log("Hmmm")
-        }
+    }
+    calcMonthlyPay(){
+        return (this.calcRepayments("repayment")/(12*this.getTerm())).toFixed(2);
     }
 }
 
-export {Mortgage_Calc};
+export { Mortgage_Calc };
