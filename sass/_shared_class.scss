@@ -2,6 +2,10 @@
     width: 90%;
     max-width:500px;
     margin:30px auto;
+    @include mp(768px){
+        margin: 10px auto;
+        max-width: 375px;
+    }
 }
 .title-color{
     color:$Slate-900;

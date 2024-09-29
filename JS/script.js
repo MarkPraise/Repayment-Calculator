@@ -78,8 +78,6 @@ document.onreadystatechange = () => {
             showError(term);
             showError(type);
 
-            console.log(amount.value)
-
             // FORMAT THE INPUTS (NUMBERS NICELY)
             if(form.reportValidity()){
 

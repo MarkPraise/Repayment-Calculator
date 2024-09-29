@@ -34,7 +34,7 @@ $borderRadius:4px;
 // MEDIA QUERIES
 
 @mixin mp($size){
-    @media (min-width: $size){
+    @media only screen and (min-width: $size){
         @content;
     }
 }
@@ -60,6 +60,15 @@ body{
     font-family: $font-family;
     font-size: 10px;
     color: $Slate-700;
+    
+    @include mp(768px){
+        background-color: $Slate-100;
+        display: flex;
+        align-items: center;
+        height: 100vh;
+        justify-content: center;
+        overflow-y: hidden;
+    }
 }
 
 
@@ -69,6 +78,12 @@ body{
     display: flex;
     flex-direction: column;
     margin-block: 20px;
+   
+
+    @include mp(768px){
+        flex-direction: row;
+        justify-content: space-between;
+    }
 
     h1{
         margin-block-end: 10px;
@@ -86,11 +101,31 @@ body{
 }    
 // MAIN
 
+main{
+    @include mp(768px){
+        
+        display: flex;
+        background-color: $white;
+        gap: 30px;
+        border-radius: 0 20px 20px 0;
+
+        .section-inputs{
+            background-color: $white;
+        }
+    }
+}
+
+
 //   FORM SECTION
 .field-wrapper{
     font-size: $font-size-p;
     font-weight: 700;
     margin-block-end: 30px;
+
+    @include mp(768px){
+        flex-basis:100%;
+        margin-block-end: 10px;
+    }
 
     label{
         display: inline-block;
@@ -123,6 +158,16 @@ body{
     }
 }
 
+.container form{
+   
+    @include mp(768px){
+        display: flex;
+        flex-flow: row wrap;
+        
+        justify-content: space-between;
+    }
+}
+
 .submitButton{
     display: flex;
     justify-content: center;
@@ -138,6 +183,10 @@ body{
     border-radius: 30px;
 
     cursor: pointer;
+
+    @include mp(768px){
+        width: 70%;
+    }
 }
 
 
@@ -145,6 +194,14 @@ body{
 
 .results{
     background-color: $Slate-900;
+    @include mp(768px){
+        border-radius: 0 20px 20px 80px;
+        align-self: stretch;
+
+        display: flex;
+        align-items: center;
+        
+    }
     
 }
 .results .container{
@@ -176,9 +233,6 @@ body{
         margin-block-start: 20px;
         padding: 20px;
 
-        // h3{
-        //     padding-block:20px ;
-        // }
         .lime-text{
             color: $primary-lime;
             padding-block: 10px;
