@@ -13,7 +13,7 @@ document.onreadystatechange = () => {
         let resultInfo = document.querySelector(".results-about");
         let resultsHeader =document.querySelector(".results-about h2");
         let resultsText =document.querySelector(".results-about p");
-        let resultsDetails =document.querySelector(".results-details");
+        let resultsDetails =document.querySelector(".results .container .results-details");
 
         clearButon.addEventListener("click",(e)=>{
             typeWrapper.forEach((item)=>{
@@ -44,6 +44,7 @@ document.onreadystatechange = () => {
             resultInfo.style.alignItems ="center";
         })
 
+        // This helps Choose the checked radio Button
         typeWrapper.forEach((item)=>{
             item.addEventListener("change",(e)=>{
                 if(item.checked){
@@ -59,31 +60,25 @@ document.onreadystatechange = () => {
 
 
         // VALIDATING THE FORM
+        
+        let form =document.getElementById("repaymentForm");
+
+         
         let amount = document.getElementById("amount");
         let term = document.getElementById("term");
         let rate = document.getElementById("rate");
         let type = document.getElementById("repay");
-
-
-        // FORMAT THE INPUTS (NUMBERS NICELY)
-
-       amount.addEventListener("input",(e)=>{
-        console.log(e.target.value)
-        let fine_numbers = +e.target.value;
-        amount.value = fine_numbers.toLocaleString()
-       })
+        let interestRate =document.getElementById("interest")
         
-
-
-        let form =document.getElementById("repaymentForm")
 
         form.addEventListener("submit",(event)=>{
             event.preventDefault();
             showError(rate);
             showError(amount);
             showError(term);
-            showError(type); 
+            showError(type);
 
+            // FORMAT THE INPUTS (NUMBERS NICELY)
             if(form.reportValidity()){
 
                 // This Chooses the checked radio Button
@@ -100,7 +95,12 @@ document.onreadystatechange = () => {
                 mortgage.setType(type.value.trim());
                 mortgage.setTerm(Number(term.value));
 
-                
+                prettyPrintAmount(type,"change",amount);
+                prettyPrintAmount(rate,"focus",amount);
+                prettyPrintAmount(interestRate,"focus",amount);
+                prettyPrintAmount(amount,"focus",amount);
+                prettyPrintAmount(term,"focus",amount);
+
 
                 dummyImage.style.display = "none";
                 resultsHeader.textContent = "Your results";
@@ -109,23 +109,24 @@ document.onreadystatechange = () => {
                 resultsText.classList.remove("text-center");
                 resultInfo.style.alignItems ="flex-start";
 
+                resultsDetails.style.display="block";
+                const overAllPay = (+mortgage.calcRepayments(mortgage.getType())).toLocaleString();
                 resultsDetails.innerHTML=`
                                             <h3>Your monthly repayments</h3>
                                             <p class="lime-text">
                                                 <i class="bi bi-currency-pound"></i>
-                                                <span> ${mortgage.calcMonthlyPay()} </span>
+                                                <span> ${(+mortgage.calcMonthlyPay()).toLocaleString()} </span>
                                             </p>
                                             <p>Total you'll repay over the term</p>
                                             <div class="white-text">
                                                 <i class="bi bi-currency-pound"></i>
                                                 <span>
-                                                ${mortgage.calcRepayments(mortgage.getType())}                                          </span>
+                                                   ${overAllPay}                                          
+                                                </span>
                                             </div>
                                         `
 
-            }
-            // This helps Choose the checked radio Button
-           
+            } 
         })
 
 
@@ -150,8 +151,22 @@ function showError(element){
         if(element.validity.valueMissing){
             message ="This field is required";
         }
-        else if(element.validity.rangeOverflow){
-            message = "Value is more than 100";
+        else if(element.type=="number"){
+            if( element.id =="term"){
+                if(element.value.includes(".")){
+                    message= " Enter an Integer Number";
+                }
+                else if(element.validity.rangeOverflow){
+                    message ="Value is more than 999";
+                }      
+            }
+            else if(element.validity.rangeOverflow){
+                message = "Value is more than 100";
+            }               
+        }
+        else if(element.validity.patternMismatch){
+            element.setCustomValidity(`Enter the mortgage Amount in figures not words (e.g 12000)`)
+            message="Enter the Mortgage Amount";
         }
 
         validationMessage.textContent = message;
@@ -166,9 +181,19 @@ function showError(element){
     }
 }
 
+function prettyPrintAmount(element,event,target){
+    element.addEventListener(event,(e)=>{
+        target.value = target.value.split(",").join(""); 
+    })
+    if(element == amount){
+        target.value = (+amount.value).toLocaleString();
+    }
+   
+}
 
 
-
-
-
+function isAlphaNumeric(param){
+    let pattern = /\D/;
+    return pattern.test(param);
+}
 

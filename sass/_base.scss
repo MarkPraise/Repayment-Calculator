@@ -168,6 +168,31 @@ body{
         align-items: center;
         gap: 10px;
     }
+    .results-details{
+        display: none;
+        background-color:  hsl(201, 50%, 10%);
+        border-radius: $borderRadius;
+        border-top: 2px solid $primary-lime;
+        margin-block-start: 20px;
+        padding: 20px;
+
+        // h3{
+        //     padding-block:20px ;
+        // }
+        .lime-text{
+            color: $primary-lime;
+            padding-block: 10px;
+            font-size: 2rem;
+            font-weight: 700;
+            border-bottom: 2px solid #222;
+            margin-block-end: 10px;
+        }
+        .white-text{
+            color: $white;
+            padding-block-start: 10px;
+            font-size: 1.4rem;
+        }
+    }
 }
 
 
