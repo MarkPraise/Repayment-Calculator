@@ -78,6 +78,8 @@ document.onreadystatechange = () => {
             showError(term);
             showError(type);
 
+            console.log(amount.value)
+
             // FORMAT THE INPUTS (NUMBERS NICELY)
             if(form.reportValidity()){
 
@@ -165,7 +167,6 @@ function showError(element){
             }               
         }
         else if(element.validity.patternMismatch){
-            element.setCustomValidity(`Enter the mortgage Amount in figures not words (e.g 12000)`)
             message="Enter the Mortgage Amount";
         }
 
